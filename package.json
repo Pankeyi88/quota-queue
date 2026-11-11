@@ -1,0 +1,71 @@
+{
+  "name": "@local/quota-queue",
+  "version": "0.2.0-dev.38",
+  "private": true,
+  "description": "DeepSeek Harness plugin for quota-aware recovery and scheduling plans of existing tasks. Quota features require CLIProxyAPI and cpa-quota-api-extension.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pankeyi88/quota-queue.git"
+  },
+  "homepage": "https://github.com/Pankeyi88/quota-queue#readme",
+  "bugs": {
+    "url": "https://github.com/Pankeyi88/quota-queue/issues"
+  },
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": {
+      "default": "./index.js"
+    },
+    "./client": {
+      "default": "./client/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "client/index.js",
+    "core/**/*.mjs",
+    "host/**/*.js",
+    "cordis.patch.yml",
+    "scripts/*.mjs",
+    "build/manifest.json",
+    "tests/**/*.mjs",
+    "docs/EXISTING-TASK-RECOVERY-PLAN.md",
+    "docs/ACCEPTANCE-MATRIX-0.2.md",
+    "docs/SECURITY-REVIEW-0.2.md",
+    "docs/RECOVERY-PLAN-WIRE.md",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test \"tests/core/*.test.mjs\" \"tests/client/*.test.mjs\" \"tests/host/*.test.mjs\"",
+    "test:core": "node --test \"tests/core/*.test.mjs\"",
+    "test:client": "node --test \"tests/client/*.test.mjs\"",
+    "test:host": "node --test \"tests/host/*.test.mjs\""
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-connection",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "~4.1.0",
+    "@deepseek-ai/dsh-typert-protocol": "0.2.2-rc.1"
+  },
+  "license": "UNLICENSED",
+  "engines": {
+    "dsh": ">=0.2.2-rc.1 <0.2.3-0"
+  }
+}

@@ -1,0 +1,47 @@
+# Dependencies and generated packages
+node_modules/
+/dist/
+/build/
+*.tgz
+*.tgz.sha256
+*.pre-sync-*
+*.tmp
+*.bak
+.dsh/
+sessions/
+profiles/
+**/*.jsonl
+**/*.jsonl.zstd
+quota_queue_v1.json
+quota_continue_v1.json
+quota_recovery_plan_v1.json
+coverage/
+
+# Local credentials and runtime state
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.log
+*.db
+*.sqlite
+*.sqlite-*
+
+# Local probes, captured UI/session evidence, editor files
+.tmp-*
+/evidence/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Historical deployment records are local-only; publish reviewed docs explicitly
+/docs/*
+!/docs/EXISTING-TASK-RECOVERY-PLAN.md
+!/docs/ACCEPTANCE-MATRIX-0.2.md
+!/docs/SECURITY-REVIEW-0.2.md
+!/docs/RECOVERY-PLAN-WIRE.md
+/ACCEPTANCE.md

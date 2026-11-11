@@ -1,0 +1,29 @@
+# Quota Queue bundle patch.
+#
+# One dual-face row. The node half is this package's `index.js` (the Cordis
+# Host service that registers `quotaQueue` and exports the single
+# `quotaQueue/dispatch` Remote method). The browser half is
+# `exports["./client"]` (`client/index.js`), discovered through
+# `package.json#dsh.client` by the client-modules node half and served at
+# `/plugins/@local/quota-queue/client.js`.
+#
+# The row declares no config on purpose: with no fixed route the Host reports
+# `configuration.ready === false` and the UI cannot add an execution task.
+# A deployment may add fixed routes through this row; every route is a user
+# reference only (provider/model/credentialRef), never a token, header or URL:
+#
+#   - insert:
+#       - id: quota-queue
+#         name: '@local/quota-queue'
+#         config:
+#           storageBackend: json
+#           routes:
+#             - id: codex-common
+#               label: Common Codex
+#               provider: <provider id from the user's own configuration>
+#               model: <model id from the user's own configuration>
+#               credentialRef: <user-named credential reference, not a secret>
+
+- insert:
+    - id: quota-queue
+      name: '@local/quota-queue'
